@@ -10,14 +10,13 @@ function App() {
 
   return (
     <Grid
-
       templateAreas={{
         base: `"nav" "main"`,
         lg: `"nav nav" "aside main"`,
       }}
       templateColumns={{
-        base: '1fr',
-        lg: '200px 1fr'
+        base: "1fr",
+        lg: "260px 1fr",
       }}
     >
       <GridItem area={"nav"}>
@@ -26,12 +25,15 @@ function App() {
 
       <Show above="lg">
         <GridItem area={"aside"} paddingX={5}>
-          <GenereList onSelectGenre={(genre) => setSelectedGenre(genre)} />
+          <GenereList
+            selectedGenre={selectedGenre}
+            onSelectGenre={(genre) => setSelectedGenre(genre)}
+          />
         </GridItem>
       </Show>
 
       <GridItem area={"main"}>
-        <GameGrid selectedGenre={selectedGenre}/>
+        <GameGrid selectedGenre={selectedGenre} />
       </GridItem>
     </Grid>
   );
