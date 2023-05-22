@@ -25,6 +25,10 @@ function App() {
         base: `"nav" "main"`,
         lg: `"nav nav" "aside main"`,
       }}
+      templateColumns={{
+        base: '1fr',
+        lg: '200px 1fr'
+      }}
     >
       <GridItem area={"nav"}>
         <NavBar onSearch={(searchText) => setGameQuery({...gameQuery, searchText })}/>
@@ -40,7 +44,7 @@ function App() {
       </Show>
 
       <GridItem area={"main"}>
-        <Box padding={2}>
+        <Box paddingLeft={2}>
           <GameHeading gameQuery={gameQuery} />
           <Flex marginBottom={5}>
             <Box marginRight={5}>
