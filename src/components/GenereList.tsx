@@ -18,11 +18,14 @@ interface Props {
 const GenereList = ({ selectedGenre, onSelectGenre }: Props) => {
   const { data, isLoading, error } = useGenres();
   const skeletons = [1, 2, 3, 4, 5, 6, 7, , 8, 9, 10, 11, 12, 13, 14, 15];
+  const genreHeading = <Heading fontSize={'2xl'} marginBottom={3}>Genres</Heading>
 
   if (error) return null;
 
   if (isLoading) {
     return (
+      <>
+      {genreHeading}
       <List>
         {skeletons.map((skeleton) => (
           <ListItem key={skeleton} paddingY={"5px"}>
@@ -30,12 +33,13 @@ const GenereList = ({ selectedGenre, onSelectGenre }: Props) => {
           </ListItem>
         ))}
       </List>
+      </>
     );
   }
 
   return (
     <>
-      <Heading fontSize={'2xl'} marginBottom={3}>Genres</Heading>
+      {genreHeading}
       <List>
         {data.map((genre) => (
           <ListItem key={genre.id} paddingY={"8px"}>
